@@ -436,7 +436,7 @@ void MitsubishiHeatPump::setup() {
     hp->setOnConnectCallback(
             [this]() {
                 ESP_LOGCONFIG(TAG, "Swap serial UART pins.");
-                this->this->get_hw_serial_()->swap();
+                this->get_hw_serial_()->swap();
             }
     );
             
