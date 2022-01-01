@@ -432,6 +432,14 @@ void MitsubishiHeatPump::setup() {
     this->fan_mode = climate::CLIMATE_FAN_OFF;
     this->swing_mode = climate::CLIMATE_SWING_OFF;
 
+    //UART0 Swap callback
+    hp->setOnConnectCallback(
+            [this]() {
+                ESP_LOGCONFIG(TAG, "Swap serial UART pins.");
+                this->this->get_hw_serial_()->swap();
+            }
+    );
+            
 #ifdef USE_CALLBACKS
     hp->setSettingsChangedCallback(
             [this]() {
